@@ -10,4 +10,4 @@ DB_PASSWORD = os.getenv("DB_PASSWORD")
 DB_DRIVER = 'mysql+pymysql'
 engine = create_engine(f'{DB_DRIVER}://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}')
 meta = MetaData()
-print(f'{DB_DRIVER}://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}')
+conn = engine.connect()
