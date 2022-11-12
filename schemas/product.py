@@ -2,7 +2,6 @@ from pydantic import BaseModel
 from typing import Optional
 from datetime import datetime
 class Product(BaseModel):
-    id: Optional[int]
     name: str
     description: str
     buyers_id: Optional[int]
