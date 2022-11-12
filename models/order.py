@@ -1,12 +1,12 @@
-from sqlalchemy import Table, Column
+from sqlalchemy import Table, Column, ForeignKey
 from sqlalchemy.sql.sqltypes import Integer, String, DateTime
 from config.db import meta, engine 
 
-user = Table("users", meta,
+order = Table("orders", meta,
               Column("id", Integer, primary_key=True),
-              Column("name", String(255)),
-              Column("email", String(255)),
-              Column("password", String(255)),
+              Column("seller_id", Integer, ForeignKey("users.id")),
+              Column("user_id", Integer, ForeignKey("users.id")),
+              Column("product_id", Integer, ForeignKey("products.id")),
               Column("created_at", DateTime),
               Column("updated_at", DateTime)
               )
