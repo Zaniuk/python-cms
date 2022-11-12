@@ -32,3 +32,10 @@ def get_user_orders(user_id: int):
         return conn.execute(order.select().where(order.c.user_id == user_id)).fetchall()
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Error: {e}")
+    
+@orders.get('orders/{product_id}', status_code=status.HTTP_200_OK, tags=["Orders"])
+def get_product_orders(product_id: int):
+    try:
+        return conn.execute(order.select().where(order.c.product_id == product_id)).fetchall()
+    except Exception as e:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Error: {e}")
