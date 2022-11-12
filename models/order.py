@@ -2,7 +2,7 @@ from sqlalchemy import Table, Column, ForeignKey
 from sqlalchemy.sql.sqltypes import Integer, String, DateTime
 from config.db import meta, engine 
 
-order = Table("products", meta,
+order = Table("orders", meta,
               Column("id", Integer, primary_key=True),
               Column("seller_id", Integer, ForeignKey("users.id")),
               Column("user_id", Integer, ForeignKey("users.id")),
