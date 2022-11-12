@@ -5,14 +5,14 @@ from schemas.user import User
 
 users = APIRouter()
 
-@users.get("/users")
+@users.get("/users", tags=["Users"])
 def get_users():
     try:
         return conn.execute(user.select()).fetchall()
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@users.get("/users/{user_id}")
+@users.get("/users/{user_id}", tags=["Users"])
 async def get_user(user_id: int) -> Response:
     
     try:
@@ -25,14 +25,14 @@ async def get_user(user_id: int) -> Response:
         raise HTTPException(status_code=500, detail=e.__str__())
         
 
-@users.delete("/users/{user_id}")
+@users.delete("/users/{user_id}", tags=["Users"])
 def delete_user(user_id: int):
     try:
         return conn.execute(user.delete().where(user.c.id == user_id))
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
-@users.put("/users/{user_id}")
+@users.put("/users/{user_id}", tags=["Users"])
 def update_user(User:User, user_id: int):
     try:
         pass        

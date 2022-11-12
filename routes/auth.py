@@ -5,13 +5,13 @@ from models.user import user
 from schemas.user import User
 auth = APIRouter()
 
-@auth.post("/auth/login")
+@auth.post("/auth/login", tags=["Auth"])
 def login(request : Request, user : User):
     
     header = request.headers['Authorization'] or request.headers['authorization'] 
     return {"message": "Login successful", "Authorization": header}
 
-@auth.post("/auth/register")
+@auth.post("/auth/register", tags=["Auth"])
 def register( User : User):
     #req = request.body
     new_user = {
