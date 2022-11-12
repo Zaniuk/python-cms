@@ -6,8 +6,8 @@ product = Table("products", meta,
               Column("id", Integer, primary_key=True),
               Column("name", String(255)),
               Column("description", String(255)),
+              Column("price", Integer),
               Column("seller_id", Integer, ForeignKey("users.id")),
-              Column("buyers_id", Integer, ForeignKey("users.id")),
               Column("created_at", DateTime),
               Column("updated_at", DateTime)
               )
